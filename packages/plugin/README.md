@@ -1,16 +1,16 @@
-@protobuf-ts/plugin
+@pqstudio/protobuf_ts_plugin
 ===================
 
-The protocol buffer compiler plugin for TypeScript: [protobuf-ts](https://github.com/timostamm/protobuf-ts) 
+The protocol buffer compiler plugin for TypeScript: [protobuf-ts](https://github.com/pq-studio/protobuf-ts) 
  
 Installation:
 
 ```shell script
 # with npm:
-npm install -D @protobuf-ts/plugin
+npm install -D @pqstudio/protobuf_ts_plugin
 
 # with yarn:
-yarn add --dev @protobuf-ts/plugin
+yarn add --dev @pqstudio/protobuf_ts_plugin
 ```             
 
 This will install the plugin as a development dependency.  

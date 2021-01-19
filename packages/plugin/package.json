@@ -1,6 +1,6 @@
 {
-  "name": "@protobuf-ts/plugin",
-  "version": "2.0.0-alpha.11",
+  "name": "@pqstudio/protobuf_ts_plugin",
+  "version": "2.0.4",
   "description": "The protocol buffer compiler plugin \"protobuf-ts\" generates TypeScript, gRPC-web, Twirp, and more.",
   "bin": {
     "protoc-gen-ts": "bin/protoc-gen-ts",
@@ -8,7 +8,7 @@
   },
   "license": "Apache-2.0",
   "author": "Timo Stamm <ts@timostamm.com>",
-  "homepage": "https://github.com/timostamm/protobuf-ts",
+  "homepage": "https://github.com/pq-studio/protobuf-ts",
   "keywords": [
     "Protocol Buffers",
     "protobuf",
@@ -23,7 +23,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/timostamm/protobuf-ts.git",
+    "url": "https://github.com/pq-studio/protobuf-ts.git",
     "directory": "packages/plugin"
   },
   "publishConfig": {

@@ -36,15 +36,20 @@ export class OutFile extends TypescriptFile implements GeneratedFile {
         let header = [
             `// @generated ${this.options.pluginCredit}`,
             `// @generated from protobuf file "${this.fileDescriptor.name}" (${props.join(', ')})`,
-            `// tslint:disable`
+            `// @ts-nocheck`,
+            `// tslint:disable`,
         ];
         if (this.registry.isExplicitlyDeclaredDeprecated(this.fileDescriptor)) {
             header.push('// @deprecated');
         }
+        header.push(`import { register } from "@pqstudio/pq_serializer";`);
+        header.push(`import { PQMessages } from "./PQMessages";`);
         [
             ...this.registry.sourceCodeComments(this.fileDescriptor, FileDescriptorProtoFields.syntax).leadingDetached,
             ...this.registry.sourceCodeComments(this.fileDescriptor, FileDescriptorProtoFields.package).leadingDetached
         ].every(block => header.push('//', ...block.split('\n').map(l => '//' + l), '//'));
+        // 定死协议信息的proto文件为PQMessages
+     
         let head = header.join('\n');
         if (head.length > 0 && !head.endsWith('\n')) {
             head += '\n';
