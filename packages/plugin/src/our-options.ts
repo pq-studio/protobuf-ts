@@ -215,7 +215,10 @@ const defaultOptions: InternalOptions = {
     runtimeAngularImportPath: '@protobuf-ts/runtime-angular',
     runtimeRpcImportPath: '@protobuf-ts/runtime-rpc',
     angularCoreImportPath: '@angular/core',
-    runtimeImportPath: '@protobuf-ts/runtime',
+    // 从
+    //runtimeImportPath: '@protobuf-ts/runtime',
+    // 修改为
+    runtimeImportPath: '@pqstudio/pq_serializer',
 } as const;
 
 

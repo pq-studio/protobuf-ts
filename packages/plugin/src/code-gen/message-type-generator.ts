@@ -1,5 +1,5 @@
 import * as ts from "typescript";
-import {LongType} from "@protobuf-ts/runtime";
+import { LongType } from "@protobuf-ts/runtime";
 import {
     addCommentBlockAsJsDoc,
     DescriptorProto,
@@ -7,18 +7,21 @@ import {
     FileOptions_OptimizeMode as OptimizeMode,
     SymbolTable,
     TypescriptFile,
-    TypeScriptImports
+    TypeScriptImports,
+    typescriptMethodFromText
 } from "@protobuf-ts/plugin-framework";
-import {CommentGenerator} from "./comment-generator";
-import {WellKnownTypes} from "../message-type-extensions/well-known-types";
-import {GoogleTypes} from "../message-type-extensions/google-types";
-import {Create} from "../message-type-extensions/create";
-import {InternalBinaryRead} from "../message-type-extensions/internal-binary-read";
-import {InternalBinaryWrite} from "../message-type-extensions/internal-binary-write";
-import {Interpreter} from "../interpreter";
-import {FieldInfoGenerator} from "./field-info-generator";
-import {GeneratorBase} from "./generator-base";
+import { CommentGenerator } from "./comment-generator";
+import { WellKnownTypes } from "../message-type-extensions/well-known-types";
+import { GoogleTypes } from "../message-type-extensions/google-types";
+import { Create } from "../message-type-extensions/create";
+import { InternalBinaryRead } from "../message-type-extensions/internal-binary-read";
+import { InternalBinaryWrite } from "../message-type-extensions/internal-binary-write";
+import { Interpreter } from "../interpreter";
+import { FieldInfoGenerator } from "./field-info-generator";
+import { GeneratorBase } from "./generator-base";
 
+const setID = `public setMsgID(id: number): void { this._id = id; }`;
+const getID = `public getMsgID(): number { return this._id; }`;
 
 export interface CustomMethodGenerator {
     make(source: TypescriptFile, descriptor: DescriptorProto): ts.MethodDeclaration[];
@@ -37,11 +40,11 @@ export class MessageTypeGenerator extends GeneratorBase {
 
 
     constructor(symbols: SymbolTable, registry: DescriptorRegistry, imports: TypeScriptImports, comments: CommentGenerator, interpreter: Interpreter,
-                private readonly options: {
-                    runtimeImportPath: string;
-                    normalLongType: LongType;
-                    oneofKindDiscriminator: string;
-                }) {
+        private readonly options: {
+            runtimeImportPath: string;
+            normalLongType: LongType;
+            oneofKindDiscriminator: string;
+        }) {
         super(symbols, registry, imports, comments, interpreter);
         this.fieldInfoGenerator = new FieldInfoGenerator(this.registry, this.imports, this.options);
         this.wellKnown = new WellKnownTypes(this.registry, this.imports, this.options);
@@ -98,6 +101,8 @@ export class MessageTypeGenerator extends GeneratorBase {
                 ),
                 ...this.wellKnown.make(source, descriptor),
                 ...this.googleTypes.make(source, descriptor),
+                typescriptMethodFromText(setID),
+                typescriptMethodFromText(getID),
             ];
 
         if (optimizeFor === OptimizeMode.SPEED) {
