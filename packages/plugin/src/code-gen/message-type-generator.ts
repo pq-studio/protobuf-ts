@@ -89,7 +89,7 @@ export class MessageTypeGenerator extends GeneratorBase {
                     undefined, undefined, [],
                     ts.createBlock([ts.createExpressionStatement(
                         ts.createCall(ts.createSuper(), undefined, [
-                            ts.createNumericLiteral(`PQMessages["${MyMessage}"]`),
+                            ts.createNumericLiteral(`PQMessages.${MyMessage}`),
                             ts.createStringLiteral(this.registry.makeTypeName(descriptor)),
                             fieldInfo
                         ])

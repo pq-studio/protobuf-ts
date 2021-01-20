@@ -48,8 +48,12 @@ export class OutFile extends TypescriptFile implements GeneratedFile {
         if (this.registry.isExplicitlyDeclaredDeprecated(this.fileDescriptor)) {
             header.push('// @deprecated');
         }
-        header.push(`import { register, PQIProtobuf } from "@pqstudio/pq_serializer";`);
-        header.push(`import { PQMessages } from "./PQMessages";`);
+        
+        if (this.fileDescriptor.name != "PQMessages.proto") {
+            header.push(`import { register } from "@pqstudio/pq_serializer";`);
+            header.push(`import { PQMessages } from "./PQMessages";`);
+        }
+
         [
             ...this.registry.sourceCodeComments(this.fileDescriptor, FileDescriptorProtoFields.syntax).leadingDetached,
             ...this.registry.sourceCodeComments(this.fileDescriptor, FileDescriptorProtoFields.package).leadingDetached
