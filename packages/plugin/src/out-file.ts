@@ -5,7 +5,7 @@ import {
     GeneratedFile,
     TypescriptFile,
 } from "@protobuf-ts/plugin-framework";
-import {InternalOptions} from "./our-options";
+import { InternalOptions } from "./our-options";
 
 
 /**
@@ -48,14 +48,14 @@ export class OutFile extends TypescriptFile implements GeneratedFile {
         if (this.registry.isExplicitlyDeclaredDeprecated(this.fileDescriptor)) {
             header.push('// @deprecated');
         }
-        header.push(`import { register } from "@pqstudio/pq_serializer";`);
+        header.push(`import { register, PQIProtobuf } from "@pqstudio/pq_serializer";`);
         header.push(`import { PQMessages } from "./PQMessages";`);
         [
             ...this.registry.sourceCodeComments(this.fileDescriptor, FileDescriptorProtoFields.syntax).leadingDetached,
             ...this.registry.sourceCodeComments(this.fileDescriptor, FileDescriptorProtoFields.package).leadingDetached
         ].every(block => header.push('//', ...block.split('\n').map(l => '//' + l), '//'));
         // 定死协议信息的proto文件为PQMessages
-     
+
         let head = header.join('\n');
         if (head.length > 0 && !head.endsWith('\n')) {
             head += '\n';

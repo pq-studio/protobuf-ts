@@ -1,6 +1,6 @@
 {
   "name": "@pqstudio/protobuf_ts_plugin",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "The protocol buffer compiler plugin \"protobuf-ts\" generates TypeScript, gRPC-web, Twirp, and more.",
   "bin": {
     "protoc-gen-ts": "bin/protoc-gen-ts",
