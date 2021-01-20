@@ -1,13 +1,13 @@
-import {IMessageType, PartialMessage} from "./message-type-contract";
-import {FieldInfo, normalizeFieldInfo, PartialFieldInfo} from "./reflection-info";
-import {ReflectionTypeCheck} from "./reflection-type-check";
-import {ReflectionJsonReader} from "./reflection-json-reader";
-import {ReflectionJsonWriter} from "./reflection-json-writer";
-import {ReflectionBinaryReader} from "./reflection-binary-reader";
-import {ReflectionBinaryWriter} from "./reflection-binary-writer";
-import {reflectionCreate} from "./reflection-create";
-import {reflectionMergePartial} from "./reflection-merge-partial";
-import {JsonValue, typeofJsonValue} from "./json-typings";
+import { IMessageType, PartialMessage } from "./message-type-contract";
+import { FieldInfo, normalizeFieldInfo, PartialFieldInfo } from "./reflection-info";
+import { ReflectionTypeCheck } from "./reflection-type-check";
+import { ReflectionJsonReader } from "./reflection-json-reader";
+import { ReflectionJsonWriter } from "./reflection-json-writer";
+import { ReflectionBinaryReader } from "./reflection-binary-reader";
+import { ReflectionBinaryWriter } from "./reflection-binary-writer";
+import { reflectionCreate } from "./reflection-create";
+import { reflectionMergePartial } from "./reflection-merge-partial";
+import { JsonValue, typeofJsonValue } from "./json-typings";
 import {
     JsonReadOptions,
     jsonReadOptions,
@@ -23,8 +23,8 @@ import {
     IBinaryReader,
     IBinaryWriter
 } from "./binary-format-contract";
-import {reflectionEquals} from "./reflection-equals";
-import {UnknownMessage} from "./unknown-types";
+import { reflectionEquals } from "./reflection-equals";
+import { UnknownMessage } from "./unknown-types";
 
 /**
  * This standard message type provides reflection-based
@@ -52,6 +52,11 @@ export class MessageType<T extends object> implements IMessageType<T> {
      */
     readonly fields: readonly FieldInfo[];
 
+    /**
+     * proto message id
+     */
+    readonly protoID: number;
+
     protected readonly defaultCheckDepth = 16;
     protected readonly refTypeCheck: ReflectionTypeCheck;
     protected readonly refJsonReader: ReflectionJsonReader;
@@ -59,7 +64,8 @@ export class MessageType<T extends object> implements IMessageType<T> {
     protected readonly refBinReader: ReflectionBinaryReader;
     protected readonly refBinWriter: ReflectionBinaryWriter;
 
-    constructor(name: string, fields: readonly PartialFieldInfo[]) {
+    constructor(protoID: number, name: string, fields: readonly PartialFieldInfo[]) {
+        this.protoID = protoID;
         this.typeName = name;
         this.fields = fields.map(normalizeFieldInfo);
         this.refTypeCheck = new ReflectionTypeCheck(this);
@@ -68,7 +74,6 @@ export class MessageType<T extends object> implements IMessageType<T> {
         this.refBinReader = new ReflectionBinaryReader(this);
         this.refBinWriter = new ReflectionBinaryWriter(this);
     }
-
 
     /**
      * Create a new message with default values.

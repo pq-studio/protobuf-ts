@@ -1,7 +1,7 @@
-import {FieldInfo} from "./reflection-info";
-import {BinaryReadOptions, BinaryWriteOptions, IBinaryReader, IBinaryWriter} from "./binary-format-contract";
-import {JsonValue} from "./json-typings";
-import {JsonReadOptions, JsonWriteOptions, JsonWriteStringOptions} from "./json-format-contract";
+import { FieldInfo } from "./reflection-info";
+import { BinaryReadOptions, BinaryWriteOptions, IBinaryReader, IBinaryWriter } from "./binary-format-contract";
+import { JsonValue } from "./json-typings";
+import { JsonReadOptions, JsonWriteOptions, JsonWriteStringOptions } from "./json-format-contract";
 
 /**
  * Similar to `Partial<T>`, but recursive, and keeps `oneof` groups
@@ -11,13 +11,13 @@ import {JsonReadOptions, JsonWriteOptions, JsonWriteStringOptions} from "./json-
 export type PartialMessage<T extends object> = {
     [K in keyof T]?: PartialField<T[K]>
 }; type PartialField<T> =
-     T extends (Date | Uint8Array | bigint | boolean | string | number) ? T
-   : T extends Array<infer U> ? Array<PartialField<U>>
-   : T extends ReadonlyArray<infer U> ? ReadonlyArray<PartialField<U>>
-   : T extends { oneofKind: string } ? T
-   : T extends { oneofKind: undefined } ? T
-   : T extends object ? PartialMessage<T>
-   : T ;
+    T extends (Date | Uint8Array | bigint | boolean | string | number) ? T
+    : T extends Array<infer U> ? Array<PartialField<U>>
+    : T extends ReadonlyArray<infer U> ? ReadonlyArray<PartialField<U>>
+    : T extends { oneofKind: string } ? T
+    : T extends { oneofKind: undefined } ? T
+    : T extends object ? PartialMessage<T>
+    : T;
 // @formatter:on
 
 
@@ -45,7 +45,11 @@ export interface IMessageType<T extends object> {
      */
     readonly fields: readonly FieldInfo[];
 
-
+    /**
+     * proto message id
+     */
+    readonly protoID: number;
+    
     /**
      * Create a new message with default values.
      *
@@ -176,6 +180,4 @@ export interface IMessageType<T extends object> {
      * omitted, a new instance is created first.
      */
     internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: T): T;
-
-
 }

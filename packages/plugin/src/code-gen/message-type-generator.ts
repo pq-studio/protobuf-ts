@@ -89,6 +89,7 @@ export class MessageTypeGenerator extends GeneratorBase {
                     undefined, undefined, [],
                     ts.createBlock([ts.createExpressionStatement(
                         ts.createCall(ts.createSuper(), undefined, [
+                            ts.createNumericLiteral(`PQMessages["${MyMessage}"]`),
                             ts.createStringLiteral(this.registry.makeTypeName(descriptor)),
                             fieldInfo
                         ])
@@ -111,10 +112,6 @@ export class MessageTypeGenerator extends GeneratorBase {
             [ts.createHeritageClause(
                 ts.SyntaxKind.ExtendsKeyword,
                 [ts.createExpressionWithTypeArguments([ts.createTypeReferenceNode(MyMessage, undefined)], MessageType)]
-            ),
-            ts.createHeritageClause(
-                ts.SyntaxKind.ImplementsKeyword,
-                [ts.createExpressionWithTypeArguments([], ts.createIdentifier("PQIProtobuf"))]
             )],
             classMembers
         );
@@ -134,16 +131,9 @@ export class MessageTypeGenerator extends GeneratorBase {
         // add to our file
         source.addStatement(classDec);
         source.addStatement(exportConst);
-        {
-            const sourceCode = `${MyMessage}.setProtoID(PQMessages["${MyMessage}"])`;
-            const f = ts.createSourceFile("", sourceCode, ts.ScriptTarget.ES2015, false, ts.ScriptKind.TS);
-            f.statements.forEach(statement => {
-                source.addStatement(statement);
-            });
-        }
 
         {
-            const sourceCode = `register(PQMessages["${MyMessage}"],${MyMessage})`;
+            const sourceCode = `register(${MyMessage}.protoID,${MyMessage})`;
             const f = ts.createSourceFile("", sourceCode, ts.ScriptTarget.ES2015, false, ts.ScriptKind.TS);
             f.statements.forEach(statement => {
                 source.addStatement(statement);
