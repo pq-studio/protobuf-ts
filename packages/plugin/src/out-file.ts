@@ -34,6 +34,12 @@ export class OutFile extends TypescriptFile implements GeneratedFile {
         }
         props.push('syntax ' + (this.fileDescriptor.syntax ?? 'proto2'));
         let header = [
+            `/**`,
+            `  * PQStudio A group of unknown boys who create happy games`,
+            `  * PQStudio The first stage 2021-2031`,
+            `  */`,
+            ``,
+            ``,
             `// @generated ${this.options.pluginCredit}`,
             `// @generated from protobuf file "${this.fileDescriptor.name}" (${props.join(', ')})`,
             `// @ts-nocheck`,

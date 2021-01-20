@@ -8,7 +8,6 @@ import {
     SymbolTable,
     TypescriptFile,
     TypeScriptImports,
-    typescriptMethodFromText
 } from "@protobuf-ts/plugin-framework";
 import { CommentGenerator } from "./comment-generator";
 import { WellKnownTypes } from "../message-type-extensions/well-known-types";
@@ -23,7 +22,6 @@ import { GeneratorBase } from "./generator-base";
 export interface CustomMethodGenerator {
     make(source: TypescriptFile, descriptor: DescriptorProto): ts.MethodDeclaration[];
 }
-
 
 export class MessageTypeGenerator extends GeneratorBase {
 
@@ -145,7 +143,7 @@ export class MessageTypeGenerator extends GeneratorBase {
         }
 
         {
-            const sourceCode = `rigister(PQMessages["${MyMessage}"],MyMessage)`;
+            const sourceCode = `register(PQMessages["${MyMessage}"],${MyMessage})`;
             const f = ts.createSourceFile("", sourceCode, ts.ScriptTarget.ES2015, false, ts.ScriptKind.TS);
             f.statements.forEach(statement => {
                 source.addStatement(statement);
