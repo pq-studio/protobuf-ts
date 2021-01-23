@@ -89,7 +89,7 @@ export class MessageTypeGenerator extends GeneratorBase {
                     undefined, undefined, [],
                     ts.createBlock([ts.createExpressionStatement(
                         ts.createCall(ts.createSuper(), undefined, [
-                            ts.createNumericLiteral(`PQMessages.${MyMessage}`),
+                            ts.createNumericLiteral(`PQMessages.M${MyMessage}`),
                             ts.createStringLiteral(this.registry.makeTypeName(descriptor)),
                             fieldInfo
                         ])
@@ -133,7 +133,7 @@ export class MessageTypeGenerator extends GeneratorBase {
         source.addStatement(exportConst);
 
         {
-            const sourceCode = `register(${MyMessage}.protoID,${MyMessage})`;
+            const sourceCode = `register(${MyMessage}.protoID,M${MyMessage})`;
             const f = ts.createSourceFile("", sourceCode, ts.ScriptTarget.ES2015, false, ts.ScriptKind.TS);
             f.statements.forEach(statement => {
                 source.addStatement(statement);
