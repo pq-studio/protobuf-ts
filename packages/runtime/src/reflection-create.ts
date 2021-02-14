@@ -1,6 +1,6 @@
-import {MessageInfo} from "./reflection-info";
-import {reflectionScalarDefault} from "./reflection-scalar-default";
-import {UnknownMessage, UnknownOneofGroup} from "./unknown-types";
+import {MessageInfo} from "./reflection-info.js";
+import {reflectionScalarDefault} from "./reflection-scalar-default.js";
+import {UnknownMessage, UnknownOneofGroup} from "./unknown-types.js";
 
 
 /**

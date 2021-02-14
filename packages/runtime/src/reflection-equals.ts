@@ -1,6 +1,6 @@
-import {MessageInfo, ScalarType} from "./reflection-info";
-import {IMessageType} from "./message-type-contract";
-import {UnknownEnum, UnknownMap, UnknownMessage, UnknownOneofGroup, UnknownScalar} from "./unknown-types";
+import {MessageInfo, ScalarType} from "./reflection-info.js";
+import {IMessageType} from "./message-type-contract.js";
+import {UnknownEnum, UnknownMap, UnknownMessage, UnknownOneofGroup, UnknownScalar} from "./unknown-types.js";
 
 
 /**

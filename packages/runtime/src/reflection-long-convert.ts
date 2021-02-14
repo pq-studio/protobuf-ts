@@ -1,5 +1,5 @@
-import {PbLong, PbULong} from "./pb-long";
-import {LongType} from "./reflection-info";
+import {PbLong, PbULong} from "./pb-long.js";
+import {LongType} from "./reflection-info.js";
 
 /**
  * Utility method to convert a PbLong or PbUlong to a JavaScript

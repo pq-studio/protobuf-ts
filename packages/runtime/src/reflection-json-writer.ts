@@ -1,11 +1,11 @@
-import {JsonObject, JsonValue} from "./json-typings";
-import {base64encode} from "./base64";
-import {JsonWriteOptions} from "./json-format-contract";
-import {PbLong, PbULong} from "./pb-long";
-import {EnumInfo, FieldInfo, MessageInfo, ScalarType} from "./reflection-info";
-import {IMessageType} from "./message-type-contract";
-import {assert, assertFloat32, assertInt32, assertUInt32} from "./assert";
-import {UnknownMessage, UnknownOneofGroup} from "./unknown-types";
+import {JsonObject, JsonValue} from "./json-typings.js";
+import {base64encode} from "./base64.js";
+import {JsonWriteOptions} from "./json-format-contract.js";
+import {PbLong, PbULong} from "./pb-long.js";
+import {EnumInfo, FieldInfo, MessageInfo, ScalarType} from "./reflection-info.js";
+import {IMessageType} from "./message-type-contract.js";
+import {assert, assertFloat32, assertInt32, assertUInt32} from "./assert.js";
+import {UnknownMessage, UnknownOneofGroup} from "./unknown-types.js";
 
 
 /**

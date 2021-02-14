@@ -1,9 +1,9 @@
-import {BinaryWriteOptions, IBinaryWriter, UnknownFieldHandler, WireType} from "./binary-format-contract";
-import {FieldInfo, MessageInfo, RepeatType, ScalarType} from "./reflection-info";
-import {IMessageType} from "./message-type-contract";
-import {assert} from "./assert";
-import {PbLong, PbULong} from "./pb-long";
-import {UnknownMessage, UnknownOneofGroup} from "./unknown-types";
+import {BinaryWriteOptions, IBinaryWriter, UnknownFieldHandler, WireType} from "./binary-format-contract.js";
+import {FieldInfo, MessageInfo, RepeatType, ScalarType} from "./reflection-info.js";
+import {IMessageType} from "./message-type-contract.js";
+import {assert} from "./assert.js";
+import {PbLong, PbULong} from "./pb-long.js";
+import {UnknownMessage, UnknownOneofGroup} from "./unknown-types.js";
 
 
 /**

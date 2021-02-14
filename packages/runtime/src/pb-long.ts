@@ -1,4 +1,4 @@
-import {int64fromString, int64toString} from "./goog-varint";
+import {int64fromString, int64toString} from "./goog-varint.js";
 
 
 /**

@@ -1,6 +1,6 @@
-import {BinaryReader} from "./binary-reader";
-import {BinaryWriter} from "./binary-writer";
-import {PbLong, PbULong} from "./pb-long";
+import {BinaryReader} from "./binary-reader.js";
+import {BinaryWriter} from "./binary-writer.js";
+import {PbLong, PbULong} from "./pb-long.js";
 
 
 /**

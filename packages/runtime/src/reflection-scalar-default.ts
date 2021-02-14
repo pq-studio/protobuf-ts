@@ -1,6 +1,6 @@
-import {LongType, ScalarType} from "./reflection-info";
-import {reflectionLongConvert} from "./reflection-long-convert";
-import {PbLong, PbULong} from "./pb-long";
+import {LongType, ScalarType} from "./reflection-info.js";
+import {reflectionLongConvert} from "./reflection-long-convert.js";
+import {PbLong, PbULong} from "./pb-long.js";
 
 /**
  * Creates the default value for a scalar type.

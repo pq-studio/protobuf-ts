@@ -1,8 +1,8 @@
-import {BinaryReadOptions, IBinaryReader, UnknownFieldHandler, WireType} from "./binary-format-contract";
-import {FieldInfo, LongType, MessageInfo, ScalarType} from "./reflection-info";
-import {reflectionLongConvert} from "./reflection-long-convert";
-import {reflectionScalarDefault} from "./reflection-scalar-default";
-import {UnknownMap, UnknownMessage, UnknownOneofGroup, UnknownScalar} from "./unknown-types";
+import {BinaryReadOptions, IBinaryReader, UnknownFieldHandler, WireType} from "./binary-format-contract.js";
+import {FieldInfo, LongType, MessageInfo, ScalarType} from "./reflection-info.js";
+import {reflectionLongConvert} from "./reflection-long-convert.js";
+import {reflectionScalarDefault} from "./reflection-scalar-default.js";
+import {UnknownMap, UnknownMessage, UnknownOneofGroup, UnknownScalar} from "./unknown-types.js";
 
 
 

@@ -1,7 +1,7 @@
-import {IBinaryReader, WireType} from "./binary-format-contract";
-import {PbLong, PbULong} from "./pb-long";
-import {utf8read} from "./protobufjs-utf8";
-import {varint32read, varint64read} from "./goog-varint";
+import {IBinaryReader, WireType} from "./binary-format-contract.js";
+import {PbLong, PbULong} from "./pb-long.js";
+import {utf8read} from "./protobufjs-utf8.js";
+import {varint32read, varint64read} from "./goog-varint.js";
 
 
 export class BinaryReader implements IBinaryReader {

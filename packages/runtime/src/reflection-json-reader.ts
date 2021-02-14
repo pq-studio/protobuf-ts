@@ -1,11 +1,11 @@
-import {isJsonObject, JsonObject, JsonValue, typeofJsonValue} from "./json-typings";
-import {base64decode} from "./base64";
-import {JsonReadOptions} from "./json-format-contract";
-import {EnumInfo, FieldInfo, LongType, MessageInfo, ScalarType} from "./reflection-info";
-import {PbLong, PbULong} from "./pb-long";
-import {assert, assertFloat32, assertInt32, assertUInt32} from "./assert";
-import {reflectionLongConvert} from "./reflection-long-convert";
-import {UnknownEnum, UnknownMessage, UnknownOneofGroup, UnknownScalar} from "./unknown-types";
+import {isJsonObject, JsonObject, JsonValue, typeofJsonValue} from "./json-typings.js";
+import {base64decode} from "./base64.js";
+import {JsonReadOptions} from "./json-format-contract.js";
+import {EnumInfo, FieldInfo, LongType, MessageInfo, ScalarType} from "./reflection-info.js";
+import {PbLong, PbULong} from "./pb-long.js";
+import {assert, assertFloat32, assertInt32, assertUInt32} from "./assert.js";
+import {reflectionLongConvert} from "./reflection-long-convert.js";
+import {UnknownEnum, UnknownMessage, UnknownOneofGroup, UnknownScalar} from "./unknown-types.js";
 
 
 /**

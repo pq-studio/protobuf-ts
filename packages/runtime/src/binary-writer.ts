@@ -1,7 +1,7 @@
-import {IBinaryWriter, WireType} from "./binary-format-contract";
-import {PbLong, PbULong} from "./pb-long";
-import {varint32write, varint64write} from "./goog-varint";
-import {assertFloat32, assertInt32, assertUInt32} from "./assert";
+import {IBinaryWriter, WireType} from "./binary-format-contract.js";
+import {PbLong, PbULong} from "./pb-long.js";
+import {varint32write, varint64write} from "./goog-varint.js";
+import {assertFloat32, assertInt32, assertUInt32} from "./assert.js";
 
 
 export class BinaryWriter implements IBinaryWriter {

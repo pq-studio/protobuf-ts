@@ -1,6 +1,6 @@
-import {lowerCamelCase} from "./lower-camel-case";
-import {IMessageType} from "./message-type-contract";
-import {JsonValue} from "./json-typings";
+import {lowerCamelCase} from "./lower-camel-case.js";
+import {IMessageType} from "./message-type-contract.js";
+import {JsonValue} from "./json-typings.js";
 
 /**
  * Describes a protobuf enum for runtime reflection.

@@ -1,20 +1,20 @@
-import { IMessageType, PartialMessage } from "./message-type-contract";
-import { FieldInfo, normalizeFieldInfo, PartialFieldInfo } from "./reflection-info";
-import { ReflectionTypeCheck } from "./reflection-type-check";
-import { ReflectionJsonReader } from "./reflection-json-reader";
-import { ReflectionJsonWriter } from "./reflection-json-writer";
-import { ReflectionBinaryReader } from "./reflection-binary-reader";
-import { ReflectionBinaryWriter } from "./reflection-binary-writer";
-import { reflectionCreate } from "./reflection-create";
-import { reflectionMergePartial } from "./reflection-merge-partial";
-import { JsonValue, typeofJsonValue } from "./json-typings";
+import { IMessageType, PartialMessage } from "./message-type-contract.js";
+import { FieldInfo, normalizeFieldInfo, PartialFieldInfo } from "./reflection-info.js";
+import { ReflectionTypeCheck } from "./reflection-type-check.js";
+import { ReflectionJsonReader } from "./reflection-json-reader.js";
+import { ReflectionJsonWriter } from "./reflection-json-writer.js";
+import { ReflectionBinaryReader } from "./reflection-binary-reader.js";
+import { ReflectionBinaryWriter } from "./reflection-binary-writer.js";
+import { reflectionCreate } from "./reflection-create.js";
+import { reflectionMergePartial } from "./reflection-merge-partial.js";
+import { JsonValue, typeofJsonValue } from "./json-typings.js";
 import {
     JsonReadOptions,
     jsonReadOptions,
     JsonWriteOptions,
     jsonWriteOptions,
     JsonWriteStringOptions
-} from "./json-format-contract";
+} from "./json-format-contract.js";
 import {
     BinaryReadOptions,
     binaryReadOptions,
@@ -22,9 +22,9 @@ import {
     binaryWriteOptions,
     IBinaryReader,
     IBinaryWriter
-} from "./binary-format-contract";
-import { reflectionEquals } from "./reflection-equals";
-import { UnknownMessage } from "./unknown-types";
+} from "./binary-format-contract.js";
+import { reflectionEquals } from "./reflection-equals.js";
+import { UnknownMessage } from "./unknown-types.js";
 
 /**
  * This standard message type provides reflection-based

@@ -1,4 +1,4 @@
-import {IMessageType} from "./message-type-contract";
+import {IMessageType} from "./message-type-contract.js";
 
 /**
  * Options for parsing JSON data.
@@ -94,6 +94,7 @@ export function jsonWriteOptions(options?: Partial<JsonWriteStringOptions>): Jso
  * Merges JSON write or read options. Later values override earlier values. Type registries are merged.
  */
 export function mergeJsonOptions<T extends JsonWriteStringOptions | JsonReadOptions>(a?: Partial<T>, b?: Partial<T>): Partial<T> {
+    //@ts-ignore
     let c: Partial<T> = {...a, ...b};
     c.typeRegistry = [...(a?.typeRegistry ?? []), ...(b?.typeRegistry ?? [])];
     return c;
