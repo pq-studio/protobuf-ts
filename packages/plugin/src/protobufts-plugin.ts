@@ -8,23 +8,23 @@ import {
     ServiceDescriptorProto,
     SymbolTable,
     TypeScriptImports
-} from "@protobuf-ts/plugin-framework";
-import {OutFile} from "./out-file";
-import {createLocalTypeName} from "./code-gen/local-type-name";
+} from "@pqstudio/protobuf_ts_framework";
+import { OutFile } from "./out-file";
+import { createLocalTypeName } from "./code-gen/local-type-name";
 import * as rt from "@protobuf-ts/runtime";
-import {Interpreter} from "./interpreter";
-import {ClientStyle, makeInternalOptions, OptionResolver, ServerStyle} from "./our-options";
-import {ServiceServerGeneratorGrpc} from "./code-gen/service-server-generator-grpc";
-import {CommentGenerator} from "./code-gen/comment-generator";
-import {MessageInterfaceGenerator} from "./code-gen/message-interface-generator";
-import {MessageTypeGenerator} from "./code-gen/message-type-generator";
-import {EnumGenerator} from "./code-gen/enum-generator";
-import {ServiceTypeGenerator} from "./code-gen/service-type-generator";
-import {ServiceClientGeneratorCall} from "./code-gen/service-client-generator-call";
-import {ServiceClientGeneratorPromise} from "./code-gen/service-client-generator-promise";
-import {ServiceClientGeneratorRxjs} from "./code-gen/service-client-generator-rxjs";
-import {FileTable} from "./file-table";
-import {ServiceServerGeneratorGeneric} from "./code-gen/service-server-generator-generic";
+import { Interpreter } from "./interpreter";
+import { ClientStyle, makeInternalOptions, OptionResolver, ServerStyle } from "./our-options";
+import { ServiceServerGeneratorGrpc } from "./code-gen/service-server-generator-grpc";
+import { CommentGenerator } from "./code-gen/comment-generator";
+import { MessageInterfaceGenerator } from "./code-gen/message-interface-generator";
+import { MessageTypeGenerator } from "./code-gen/message-type-generator";
+import { EnumGenerator } from "./code-gen/enum-generator";
+import { ServiceTypeGenerator } from "./code-gen/service-type-generator";
+import { ServiceClientGeneratorCall } from "./code-gen/service-client-generator-call";
+import { ServiceClientGeneratorPromise } from "./code-gen/service-client-generator-promise";
+import { ServiceClientGeneratorRxjs } from "./code-gen/service-client-generator-rxjs";
+import { FileTable } from "./file-table";
+import { ServiceServerGeneratorGeneric } from "./code-gen/service-server-generator-generic";
 
 
 export class ProtobuftsPlugin extends PluginBase<OutFile> {
@@ -35,51 +35,51 @@ export class ProtobuftsPlugin extends PluginBase<OutFile> {
         // long type
         long_type_string: {
             description: "Sets jstype = JS_STRING for message fields with 64 bit integral values. \n" +
-                         "The default behaviour is to use native `bigint`. \n" +
-                         "Only applies to fields that do *not* use the option `jstype`.",
+                "The default behaviour is to use native `bigint`. \n" +
+                "Only applies to fields that do *not* use the option `jstype`.",
             excludes: ["long_type_number", "long_type_bigint"],
         },
         long_type_number: {
             description: "Sets jstype = JS_NUMBER for message fields with 64 bit integral values. \n" +
-                         "The default behaviour is to use native `bigint`. \n" +
-                         "Only applies to fields that do *not* use the option `jstype`.",
+                "The default behaviour is to use native `bigint`. \n" +
+                "Only applies to fields that do *not* use the option `jstype`.",
             excludes: ["long_type_string", "long_type_bigint"],
         },
         long_type_bigint: {
             description: "Sets jstype = JS_NORMAL for message fields with 64 bit integral values. \n" +
-                         "This is the default behavior. \n" +
-                         "Only applies to fields that do *not* use the option `jstype`.",
+                "This is the default behavior. \n" +
+                "Only applies to fields that do *not* use the option `jstype`.",
             excludes: ["long_type_string", "long_type_number"],
         },
 
         // misc
         generate_dependencies: {
             description: "By default, only the PROTO_FILES passed as input to protoc are generated, \n" +
-                         "not the files they import. Set this option to generate code for dependencies \n" +
-                         "too.",
+                "not the files they import. Set this option to generate code for dependencies \n" +
+                "too.",
         },
 
         // client
         client_none: {
             description: "Do not generate rpc clients. \n" +
-                         "Only applies to services that do *not* use the option `ts.client`. \n" +
-                         "If you do not want rpc clients at all, use `force_client_none`.",
+                "Only applies to services that do *not* use the option `ts.client`. \n" +
+                "If you do not want rpc clients at all, use `force_client_none`.",
             excludes: ['client_call', 'client_promise', 'client_rx'],
         },
         client_call: {
             description: "Use *Call return types for rpc clients. \n" +
-                         "Only applies to services that do *not* use the option `ts.client`. \n" +
-                         "Since CALL is the default, this option has no effect.",
+                "Only applies to services that do *not* use the option `ts.client`. \n" +
+                "Since CALL is the default, this option has no effect.",
             excludes: ['client_none', 'client_promise', 'client_rx', 'force_client_none'],
         },
         client_promise: {
             description: "Use Promise return types for rpc clients. \n" +
-                         "Only applies to services that do *not* use the option `ts.client`.",
+                "Only applies to services that do *not* use the option `ts.client`.",
             excludes: ['client_none', 'client_call', 'client_rx', 'force_client_none'],
         },
         client_rx: {
             description: "Use Observable return types from the `rxjs` package for rpc clients. \n" +
-                         "Only applies to services that do *not* use the option `ts.client`." ,
+                "Only applies to services that do *not* use the option `ts.client`.",
             excludes: ['client_none', 'client_call', 'client_promise', 'force_client_none'],
         },
         force_client_none: {
@@ -87,29 +87,29 @@ export class ProtobuftsPlugin extends PluginBase<OutFile> {
         },
         enable_angular_annotations: {
             description: "If set, the generated rpc client will have an angular @Injectable() \n" +
-                         "annotation and the `RpcTransport` constructor argument is annotated with a \n" +
-                         "@Inject annotation. For this feature, you will need the npm package \n" +
-                         "'@protobuf-ts/runtime-angular'.",
+                "annotation and the `RpcTransport` constructor argument is annotated with a \n" +
+                "@Inject annotation. For this feature, you will need the npm package \n" +
+                "'@protobuf-ts/runtime-angular'.",
             excludes: ['force_client_none'],
         },
 
         // server
         server_none: {
             description: "Do not generate rpc servers. \n" +
-                         "This is the default behaviour, but only applies to services that do \n" +
-                         "*not* use the option `ts.server`. \n" +
-                         "If you do not want servers at all, use `force_server_none`.",
+                "This is the default behaviour, but only applies to services that do \n" +
+                "*not* use the option `ts.server`. \n" +
+                "If you do not want servers at all, use `force_server_none`.",
             excludes: ['server_grpc'],
         },
         server_generic: {
             description: "Generate a generic server interface. Adapters be used to serve the service, \n" +
-                         "for example @protobuf-ts/grpc-backend for gRPC. \n" +
-                         "Only applies to services that do *not* use the option `ts.server`.",
+                "for example @protobuf-ts/grpc-backend for gRPC. \n" +
+                "Only applies to services that do *not* use the option `ts.server`.",
             excludes: ['server_none', 'force_server_none'],
         },
         server_grpc: {
             description: "Generate a server interface and definition for use with @grpc/grpc-js. \n" +
-                         "Only applies to services that do *not* use the option `ts.server`.",
+                "Only applies to services that do *not* use the option `ts.server`.",
             excludes: ['server_none', 'force_server_none'],
         },
         force_server_none: {
@@ -119,12 +119,12 @@ export class ProtobuftsPlugin extends PluginBase<OutFile> {
         // optimization
         optimize_speed: {
             description: "Sets optimize_for = SPEED for proto files that have no file option \n" +
-                         "'option optimize_for'. Since SPEED is the default, this option has no effect.",
+                "'option optimize_for'. Since SPEED is the default, this option has no effect.",
             excludes: ['force_optimize_speed'],
         },
         optimize_code_size: {
             description: "Sets optimize_for = CODE_SIZE for proto files that have no file option \n" +
-                         "'option optimize_for'.",
+                "'option optimize_for'.",
             excludes: ['force_optimize_speed'],
         },
         force_optimize_code_size: {
@@ -139,11 +139,13 @@ export class ProtobuftsPlugin extends PluginBase<OutFile> {
     }
 
 
-    constructor(private readonly version: string) {
+    constructor(
+        protected readonly version: string,
+        protected readonly type: string,
+    ) {
         super();
         this.version = version;
     }
-
 
     generate(request: CodeGeneratorRequest): OutFile[] {
         const
@@ -152,11 +154,16 @@ export class ProtobuftsPlugin extends PluginBase<OutFile> {
                 pluginCredit: `by protobuf-ts ${this.version}` + (request.parameter ? ` with parameters ${request.parameter}` : ''),
                 emitAngularAnnotations: params.enable_angular_annotations,
                 normalLongType: params.long_type_string ? rt.LongType.STRING : params.long_type_number ? rt.LongType.NUMBER : rt.LongType.BIGINT,
-            }),
-            registry = DescriptorRegistry.createFrom(request),
+            });
+
+        if (this.type == "client") {
+            options.runtimeImportPath = "../protobuf/index";
+        }
+
+        const registry = DescriptorRegistry.createFrom(request),
             symbols = new SymbolTable(),
             fileTable = new FileTable(),
-            imports = new TypeScriptImports(symbols),
+            imports = new TypeScriptImports(symbols, this.type),
             comments = new CommentGenerator(registry),
             interpreter = new Interpreter(registry, options),
             optionResolver = new OptionResolver(interpreter, registry, params),
@@ -169,7 +176,7 @@ export class ProtobuftsPlugin extends PluginBase<OutFile> {
             genClientCall = new ServiceClientGeneratorCall(symbols, registry, imports, comments, interpreter, options),
             genClientPromise = new ServiceClientGeneratorPromise(symbols, registry, imports, comments, interpreter, options),
             genClientRx = new ServiceClientGeneratorRxjs(symbols, registry, imports, comments, interpreter, options)
-        ;
+            ;
 
 
         let outFiles: OutFile[] = [];
@@ -192,12 +199,12 @@ export class ProtobuftsPlugin extends PluginBase<OutFile> {
 
         for (let fileDescriptor of registry.allFiles()) {
             const
-                outMain = new OutFile(fileTable.get(fileDescriptor).name, fileDescriptor, registry, options),
-                outServerGeneric = new OutFile(fileTable.get(fileDescriptor, 'generic-server').name, fileDescriptor, registry, options),
-                outServerGrpc = new OutFile(fileTable.get(fileDescriptor, 'grpc-server').name, fileDescriptor, registry, options),
-                outClientCall = new OutFile(fileTable.get(fileDescriptor, 'client').name, fileDescriptor, registry, options),
-                outClientRx = new OutFile(fileTable.get(fileDescriptor, 'rx-client').name, fileDescriptor, registry, options),
-                outClientPromise = new OutFile(fileTable.get(fileDescriptor, 'promise-client').name, fileDescriptor, registry, options);
+                outMain = new OutFile(fileTable.get(fileDescriptor).name, fileDescriptor, registry, options, this.type),
+                outServerGeneric = new OutFile(fileTable.get(fileDescriptor, 'generic-server').name, fileDescriptor, registry, options, this.type),
+                outServerGrpc = new OutFile(fileTable.get(fileDescriptor, 'grpc-server').name, fileDescriptor, registry, options, this.type),
+                outClientCall = new OutFile(fileTable.get(fileDescriptor, 'client').name, fileDescriptor, registry, options, this.type),
+                outClientRx = new OutFile(fileTable.get(fileDescriptor, 'rx-client').name, fileDescriptor, registry, options, this.type),
+                outClientPromise = new OutFile(fileTable.get(fileDescriptor, 'promise-client').name, fileDescriptor, registry, options, this.type);
             outFiles.push(outMain, outServerGeneric, outServerGrpc, outClientCall, outClientRx, outClientPromise);
 
             registry.visitTypes(fileDescriptor, descriptor => {

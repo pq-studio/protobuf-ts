@@ -4,10 +4,11 @@ import * as ts from "typescript";
 export class TypescriptFile {
 
     private sf: ts.SourceFile;
+    protected type: string;
 
-
-    constructor(filename: string) {
+    constructor(filename: string, type: string) {
         this.sf = ts.createSourceFile(filename, "", ts.ScriptTarget.Latest, false, ts.ScriptKind.TS);
+        this.type = type;
     }
 
 
@@ -50,7 +51,7 @@ export class TypescriptFile {
      * Returns an empty string if there are no statements.
      */
     getContent(): string {
-        let printer: ts.Printer = ts.createPrinter({newLine: ts.NewLineKind.LineFeed});
+        let printer: ts.Printer = ts.createPrinter({ newLine: ts.NewLineKind.LineFeed });
         return printer.printFile(this.sf);
     }
 

@@ -5,7 +5,7 @@ import {
     TypescriptFile,
     TypeScriptImports,
     typescriptLiteralFromValue
-} from "@protobuf-ts/plugin-framework";
+} from "@pqstudio/protobuf_ts_framework";
 import * as ts from "typescript";
 import {LongType} from "@protobuf-ts/runtime";
 import {Interpreter} from "../interpreter";

@@ -1,9 +1,10 @@
 {
   "name": "@pqstudio/protobuf_ts_plugin",
-  "version": "2.0.12",
+  "version": "2.0.16",
   "description": "The protocol buffer compiler plugin \"protobuf-ts\" generates TypeScript, gRPC-web, Twirp, and more.",
   "bin": {
     "protoc-gen-ts": "bin/protoc-gen-ts",
+    "protoc-gen-client": "bin/protoc-gen-client",
     "protoc-gen-dump": "bin/protoc-gen-dump"
   },
   "license": "Apache-2.0",
@@ -21,6 +22,9 @@
     "Twirp",
     "Reflection"
   ],
+  "config": {
+    "protocVersion": "3.17.0"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/pq-studio/protobuf-ts.git",
@@ -39,7 +43,7 @@
     "tslib": ">=1.6.1"
   },
   "dependencies": {
-    "@protobuf-ts/plugin-framework": "^2.0.0-alpha.11",
+    "@pqstudio/protobuf_ts_framework": "^2.0.3",
     "@protobuf-ts/protoc": "^2.0.0-alpha.11",
     "@protobuf-ts/runtime": "^2.0.0-alpha.11",
     "@protobuf-ts/runtime-rpc": "^2.0.0-alpha.11",

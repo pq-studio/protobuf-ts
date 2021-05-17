@@ -1,4 +1,4 @@
-import {AnyTypeDescriptorProto, FileDescriptorProto, IDescriptorTree} from "@protobuf-ts/plugin-framework";
+import {AnyTypeDescriptorProto, FileDescriptorProto, IDescriptorTree} from "@pqstudio/protobuf_ts_framework";
 import {assert} from "@protobuf-ts/runtime";
 
 

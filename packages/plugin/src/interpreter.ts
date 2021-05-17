@@ -9,7 +9,7 @@ import {
     MethodOptions_IdempotencyLevel,
     OneofDescriptorProto,
     ServiceDescriptorProto,
-} from "@protobuf-ts/plugin-framework";
+} from "@pqstudio/protobuf_ts_framework";
 import * as rt from "@protobuf-ts/runtime";
 import {assert} from "@protobuf-ts/runtime";
 import * as rpc from "@protobuf-ts/runtime-rpc";

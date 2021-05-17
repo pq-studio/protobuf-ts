@@ -5,7 +5,7 @@ import {
     CodeGeneratorResponse_Feature,
     GeneratedFile,
     PluginBase
-} from "@protobuf-ts/plugin-framework";
+} from "@pqstudio/protobuf_ts_framework";
 
 
 const BIN_SUFFIX = '.codegenreq';

@@ -1,18 +1,18 @@
-import {assert} from "@protobuf-ts/runtime";
+import { assert } from "@protobuf-ts/runtime";
 import * as ts from "typescript";
 import * as path from "path";
-import {SymbolTable} from "./symbol-table";
-import {AnyTypeDescriptorProto} from "./descriptor-info";
-import {TypescriptFile} from "./typescript-file";
+import { SymbolTable } from "./symbol-table";
+import { AnyTypeDescriptorProto } from "./descriptor-info";
+import { TypescriptFile } from "./typescript-file";
 
-
+let types = "server";
 export class TypeScriptImports {
 
     private readonly symbols: SymbolTable;
 
-
-    constructor(symbols: SymbolTable) {
+    constructor(symbols: SymbolTable, type: string) {
         this.symbols = symbols;
+        types = type;
     }
 
 
@@ -207,6 +207,14 @@ function ensureNamedImportPresent(
  * import {<name> as <as>} from '<from>';
  */
 function createNamedImport(name: string, from: string, as?: string): ts.ImportDeclaration {
+    // add js stuffix
+
+    if (types != "client") {
+        if (from.startsWith(".") || from.startsWith("..")) {
+            from += ".js";
+        }
+    }
+
     if (as) {
         return ts.createImportDeclaration(
             undefined,

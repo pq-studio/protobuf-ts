@@ -8,7 +8,7 @@ import {
     SymbolTable,
     TypescriptFile,
     TypeScriptImports
-} from "@protobuf-ts/plugin-framework";
+} from "@pqstudio/protobuf_ts_framework";
 import {Interpreter} from "../interpreter";
 import * as ts from "typescript";
 import {assert} from "@protobuf-ts/runtime";

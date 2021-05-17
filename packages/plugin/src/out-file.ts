@@ -4,7 +4,7 @@ import {
     FileDescriptorProtoFields,
     GeneratedFile,
     TypescriptFile,
-} from "@protobuf-ts/plugin-framework";
+} from "@pqstudio/protobuf_ts_framework";
 import { InternalOptions } from "./our-options";
 
 
@@ -19,8 +19,9 @@ export class OutFile extends TypescriptFile implements GeneratedFile {
         public readonly fileDescriptor: FileDescriptorProto,
         private readonly registry: DescriptorRegistry,
         private readonly options: InternalOptions,
+        type: string
     ) {
-        super(name);
+        super(name, type);
     }
 
 
@@ -48,10 +49,17 @@ export class OutFile extends TypescriptFile implements GeneratedFile {
         if (this.registry.isExplicitlyDeclaredDeprecated(this.fileDescriptor)) {
             header.push('// @deprecated');
         }
-        
+
         if (this.fileDescriptor.name != "PQMessages.proto") {
-            header.push(`import { register } from "@pqstudio/pq_serializer";`);
-            header.push(`import { PQMessages } from "./PQMessages";`);
+
+            if (this.type == "client") {
+                header.push(`import { register,PQMessages } from "../protobuf/index";`);
+            } else {
+                header.push(`import { register } from "@pqstudio/pq_serializer";`);
+
+                // typescript esm need js suffix
+                header.push(`import { PQMessages } from "./PQMessages.js";`);
+            }
         }
 
         [

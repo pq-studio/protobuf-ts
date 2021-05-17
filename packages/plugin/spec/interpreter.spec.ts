@@ -1,5 +1,5 @@
 import {getFixtureFileDescriptor} from "./support/helpers";
-import {DescriptorRegistry} from "@protobuf-ts/plugin-framework";
+import {DescriptorRegistry} from "@pqstudio/protobuf_ts_framework";
 import {Interpreter} from "../src/interpreter";
 import * as rt from "@protobuf-ts/runtime";
 

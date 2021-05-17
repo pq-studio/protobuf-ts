@@ -4,7 +4,7 @@ import {
     SymbolTable,
     TypescriptFile,
     TypeScriptImports
-} from "@protobuf-ts/plugin-framework";
+} from "@pqstudio/protobuf_ts_framework";
 import * as ts from "typescript";
 import * as rpc from "@protobuf-ts/runtime-rpc";
 import {CommentGenerator} from "./comment-generator";

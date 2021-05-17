@@ -2,6 +2,7 @@
   "extends": "./tsconfig.json",
   "files": [
     "src/protobufts-plugin.ts",
+    "src/protobufts-plugin-client",
     "src/dump-plugin.ts"
   ],
   "include": [

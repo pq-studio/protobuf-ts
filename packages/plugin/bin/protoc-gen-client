@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+
+const { ProtobuftsPluginClient } = require("../build/protobufts-plugin-client");
+const pkg = require("../package.json");
+
+new ProtobuftsPluginClient(pkg.version, "client").run().catch(_ => {
+    process.stderr.write('failed to run plugin');
+    process.exit(1);
+});

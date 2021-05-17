@@ -10,7 +10,7 @@ import {
     MethodOptions,
     ServiceDescriptorProto,
     ServiceOptions
-} from "@protobuf-ts/plugin-framework";
+} from "@pqstudio/protobuf_ts_framework";
 import {Interpreter} from "./interpreter";
 
 
@@ -193,7 +193,7 @@ export interface InternalOptions {
     readonly angularCoreImportPath: string;
     readonly runtimeAngularImportPath: string;
     readonly runtimeRpcImportPath: string;
-    readonly runtimeImportPath: string;
+    runtimeImportPath: string;
 }
 
 export function makeInternalOptions(options?: Partial<InternalOptions>): InternalOptions {

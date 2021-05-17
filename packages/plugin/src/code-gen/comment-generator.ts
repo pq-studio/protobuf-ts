@@ -9,7 +9,7 @@ import {
     isAnyTypeDescriptorProto,
     MethodDescriptorProto,
     OneofDescriptorProto
-} from "@protobuf-ts/plugin-framework";
+} from "@pqstudio/protobuf_ts_framework";
 
 
 export class CommentGenerator {

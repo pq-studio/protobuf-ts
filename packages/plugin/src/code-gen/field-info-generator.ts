@@ -5,7 +5,7 @@ import {
     TypescriptFile,
     TypeScriptImports,
     typescriptLiteralFromValue
-} from "@protobuf-ts/plugin-framework";
+} from "@pqstudio/protobuf_ts_framework";
 
 
 /**

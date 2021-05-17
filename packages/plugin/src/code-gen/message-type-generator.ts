@@ -8,7 +8,7 @@ import {
     SymbolTable,
     TypescriptFile,
     TypeScriptImports,
-} from "@protobuf-ts/plugin-framework";
+} from "@pqstudio/protobuf_ts_framework";
 import { CommentGenerator } from "./comment-generator";
 import { WellKnownTypes } from "../message-type-extensions/well-known-types";
 import { GoogleTypes } from "../message-type-extensions/google-types";
@@ -133,7 +133,7 @@ export class MessageTypeGenerator extends GeneratorBase {
         source.addStatement(exportConst);
 
         {
-            const sourceCode = `register(${MyMessage}.protoID,M${MyMessage})`;
+            const sourceCode = `register(${MyMessage}.protoID,${MyMessage})`;
             const f = ts.createSourceFile("", sourceCode, ts.ScriptTarget.ES2015, false, ts.ScriptKind.TS);
             f.statements.forEach(statement => {
                 source.addStatement(statement);

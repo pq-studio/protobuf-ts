@@ -1,7 +1,7 @@
 import {getFixtureCodeGeneratorRequest} from "./support/helpers";
 import {ProtobuftsPlugin} from "../src/protobufts-plugin";
 import * as ts from "typescript";
-import {setupCompiler} from "@protobuf-ts/plugin-framework";
+import {setupCompiler} from "@pqstudio/protobuf_ts_framework";
 
 
 describe('protobuftsPlugin', function () {

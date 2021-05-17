@@ -3,7 +3,7 @@ import {SyntaxKind} from "typescript";
 import * as rpc from "@protobuf-ts/runtime-rpc";
 import {ServiceClientGeneratorBase} from "./service-client-generator-base";
 import {assert} from "@protobuf-ts/runtime";
-import {TypescriptFile} from "@protobuf-ts/plugin-framework";
+import {TypescriptFile} from "@pqstudio/protobuf_ts_framework";
 
 
 export class ServiceClientGeneratorRxjs extends ServiceClientGeneratorBase {

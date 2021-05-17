@@ -1,4 +1,4 @@
-import {CodeGeneratorRequest, FileDescriptorProto, FileDescriptorSet} from "@protobuf-ts/plugin-framework";
+import {CodeGeneratorRequest, FileDescriptorProto, FileDescriptorSet} from "@pqstudio/protobuf_ts_framework";
 import {join, normalize} from "path";
 import {existsSync, readFileSync} from "fs";
 

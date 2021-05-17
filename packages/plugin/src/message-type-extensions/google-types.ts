@@ -4,7 +4,7 @@ import {
     TypescriptFile,
     TypeScriptImports,
     typescriptMethodFromText
-} from "@protobuf-ts/plugin-framework";
+} from "@pqstudio/protobuf_ts_framework";
 import * as ts from "typescript";
 import {LongType} from "@protobuf-ts/runtime";
 import {CustomMethodGenerator} from "../code-gen/message-type-generator";

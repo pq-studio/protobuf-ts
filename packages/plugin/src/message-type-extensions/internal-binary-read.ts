@@ -8,7 +8,7 @@ import {
     TypescriptFile,
     TypeScriptImports,
     typescriptLiteralFromValue
-} from "@protobuf-ts/plugin-framework";
+} from "@pqstudio/protobuf_ts_framework";
 import * as rt from "@protobuf-ts/runtime";
 import {assert, LongType} from "@protobuf-ts/runtime";
 import {CustomMethodGenerator} from "../code-gen/message-type-generator";

@@ -7,7 +7,7 @@ import {
     TypescriptEnumBuilder,
     TypescriptFile,
     TypeScriptImports
-} from "@protobuf-ts/plugin-framework";
+} from "@pqstudio/protobuf_ts_framework";
 import {CommentGenerator} from "./comment-generator";
 import {Interpreter} from "../interpreter";
 import {GeneratorBase} from "./generator-base";
