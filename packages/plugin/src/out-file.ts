@@ -53,7 +53,8 @@ export class OutFile extends TypescriptFile implements GeneratedFile {
         if (this.fileDescriptor.name != "PQMessages.proto") {
 
             if (this.type == "client") {
-                header.push(`import { register,PQMessages } from "../protobuf/index";`);
+                header.push(`import { register } from "../protobuf/index";`);
+                header.push(`import { PQMessages } from "./PQMessages";`);
             } else {
                 header.push(`import { register } from "@pqstudio/pq_serializer";`);
 
